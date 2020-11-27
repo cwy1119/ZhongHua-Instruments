@@ -6,7 +6,7 @@ class Config(object):
     #mysql:   mysql+pymysql://username:password@host/database
     #postgres: postgresql://username:password@host/database
 
-    # SQLALCHEMY_DATABASE_URI = r"mysql+pymysql://root:1234@localhost/dam" #这里填写你自己的数据库,格式参考如上
+    # SQLALCHEMY_DATABASE_URI = r"" #这里填写你自己的数据库,格式参考如上
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
