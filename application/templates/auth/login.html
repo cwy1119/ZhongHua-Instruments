@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中华器乐 | 登陆</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+    <section>
+        <!-- 登录 -->
+        <div class="container">
+            <div class="user singinBx">
+                <div class="imgBx"><img src="../static/img/古筝.png" alt=""></div>
+                <div class="formBx">
+                    <form action="" id="login" method="POST">
+                        {{loginForm.hidden_tag()}}
+                        <h2>登录</h2>
+                        <!-- 错误警告 -->
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages%}
+                                <div class="alert alert-danger">
+                                    <p>{{message}}</p>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        {{ loginForm.lemail(placeholder="邮箱",size=25) }}
+                        {% for error in loginForm.lemail.errors %}
+                            <span class="error-message">{{error}}</span> <br>
+                        {% endfor %}
+                        {{ loginForm.lpassword(placeholder="密码",size=15) }}
+                        {% for error in loginForm.lpassword.errors %}
+                            <span class="error-message">{{error}}</span> <br>
+                        {% endfor %}
+                        {{ loginForm.lsubmit(value="登录") }}
+                        <p class="signup">没有账号？<a href="#" onclick="topggleForm();">注册</a></p>
+                    </form>
+                </div>
+            </div>
+            <!-- 注册 -->
+            <div class="user singupBx">
+                <div class="formBx">
+                    <form action="" id="register" method="POST">
+                        {{registerForm.hidden_tag()}}
+                        <h2>注册</h2>
+                        {{registerForm.rname(placeholder="用户名")}}
+                        {{registerForm.remail(placeholder="邮箱")}}
+                        {{registerForm.rpassword(placeholder="密码")}}
+                        {{registerForm.rpassword_confirm(placeholder="再次输入密码")}}
+                        {{registerForm.rsubmit(value="注册")}}
+                        <p class="signup">已有账号？<a href="#" onclick="topggleForm();">登录</a></p>
+                    </form>
+                </div>
+                <div class="imgBx"><img src="../static/img/二胡.png" alt=""></div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        function topggleForm(){
+            var container = document.querySelector('.container');
+            container.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

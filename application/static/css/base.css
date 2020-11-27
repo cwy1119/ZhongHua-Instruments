@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 8em;
+    /* background-color: #fbfbfb; */
+    z-index: 20;
+    border-bottom: solid 1px #ddd;
+    /* background-image: url("../img/bg1.jpg");
+    background-size: cover; */
+}
+
+.first-nav {
+    position: absolute;
+    display: block;
+    top: 2.5em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.first-nav>ul {
+    display: inline-block;
+    border: 2px solid rgba(211, 149, 78, 0.75);
+    border-radius: 0.65em;
+    box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.39);
+    padding: 0 1.5em 0 1.5em;
+}
+
+.first-nav>ul>li {
+    display: inline-block;
+    text-align: center;
+    padding: 0 1.5em 0 1.5em;
+}
+
+.first-nav>ul>li>a,
+.first-nav>ul>li>span {
+    display: block;
+    color: rgba(211, 149, 78, 0.75);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.7em;
+    letter-spacing: 0.25em;
+    height: 5em;
+    line-height: 5em;
+    -moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    -ms-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    outline: 0;
+}
+
+.first-nav>ul>li:hover>a,
+.first-nav>ul>li.active>a,
+.first-nav>ul>li.active>span {
+    color: rgba(0, 0, 0, 0.692);
+}
+
+.header .content-resizer {
+    padding-top: 70px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fullscreen {
+    height: 600px;
+    position: relative;
+}
+
+.content-resizer {
+    position: absolute;
+    width: 100%;
+    top: 200px;
+    min-height: 200px;
+}
+
+.scroll-down-div {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #4d4d4d;
+    cursor: pointer;
+    height: 32px;
+    font-size: 18px
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 70px;
+    padding-top: 15px;
+    z-index: 10;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    float: left;
+    font-size: 2em;
+    padding-left: 1em;
+}
+
+.nav .pure-menu-list {
+    float: right;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    margin-right: 1em;
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+li {
+    display: block
+}
+
+.scroll-down-div {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #4d4d4d;
+    cursor: pointer;
+    height: 32px;
+    font-size: 18px
+}
+
+#briefInfo-page {
+    width: 70%;
+    padding: 10% 0;
+    min-height: 800px;
+    background-color: #fff;
+    margin: auto;
+}
+
+#briefInfo-page .article {
+    float: left;
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#briefInfo-page .obj-pic {
+    float: right;
+    width: 30%;
+    padding: 5%;
+}
+
+
+/* 
+#briefInfo-page .obj-pic-img {
+    position: relative;
+    float: right;
+    margin: 10%;
+} */
+
+.article .article-title {
+    text-align: center;
+    font-size: 36px;
+}
+
+.article .article-content {
+    padding: 10px;
+}
+
+.article-meta #article-date {
+    font-size: 18px;
+    float: right;
+}
+
+
+/*名家页相关*/
+
+#master-page {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+    font-size: 14px;
+    padding-left: .5em;
+    padding-right: .5em;
+    font-size: 16px;
+}
+
+#masterWork-page {
+    width: 80%;
+    margin: auto;
+}
+
+#masterWork-page .mplayer {
+    float: left;
+    width: 40%;
+}
+
+#masterWork-page .article {
+    float: right;
+    width: 50%;
+    margin: 150px auto;
+}
+
+
+/*左边固定播放器按钮*/
+
+.player-control__btns_fixed {
+    position: fixed;
+    top: 47%;
+    /* left: 0.5%; */
+    width: auto;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 21;
+    border-right: 2px solid gray;
+}
+
+.player-control__btn_fixed {
+    width: fit-content;
+    margin: 0 5px;
+    font-weight: bolder;
+    cursor: pointer;
+}

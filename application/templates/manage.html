@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中华曲库管理系统</title>
+    <link rel="stylesheet" href="../static/css/manage.css">
+    <script>
+        fullscreenfunc = function() {
+            var n = window.innerHeight;
+            fullscreens = document.getElementsByClassName("fullscreen")
+            for (var i = 0; i < fullscreens.length; i++) {
+                fullscreens[i].style.height = n + "px";
+            }
+        }
+        window.onload = function() {
+            fullscreenfunc();
+        }
+        window.onresize = fullscreenfunc;
+    </script>
+</head>
+
+<body>
+    <div class="left-menu fullscreen">
+        <div class="left-header">
+            <h2>中华曲库管理系统</h1>
+                <div> 欢迎登陆: {{username}}</div>
+        </div>
+        <div class="left-upload">
+            <h3>上传文件</h3>
+            <hr class="divider">
+            <form method="post" action="{{url_for('main.uploadZip')}}" enctype="multipart/form-data">
+                <p>选择资源压缩包</p>
+                <input type="file" size="30" name="zip_resoure" />
+                <br>
+                <input type="submit" value="提交" class="button-new" style="margin-top:15px;" />
+            </form>
+        </div>
+
+    </div>
+    <div class="right">
+        {% for ins in info%}
+        <div class="card">
+            <div class="card-top">
+                <div class="card-tleft">
+                    {{ins["name"]}}
+                </div>
+                <div class="card-tright">
+                    <a href="{{url_for('.base',ins=ins['name'])}}">预览</a>
+                    <a href="{{url_for('.delIns',ins=ins['name'])}}">删除</a>
+
+                </div>
+            </div>
+            <div class="card-bottom">
+                <img src="{{ins['pic_url']}}" alt="">
+                <!-- <img src="../static/img/二胡.png" alt=""> -->
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

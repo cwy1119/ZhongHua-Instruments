@@ -1,0 +1,6 @@
+{{user.name}},
+欢迎注册CWY的网站
+点击下方链接来验证您的账户
+{{url_for('auth.confirm',token=token,_external=True)}}
+(温馨提示:若再邮件中不能跳转,可复制到浏览器再打开)
+祝好

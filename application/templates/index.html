@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    
+    
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        html{
+            height : 100%;
+        }
+        body {
+            height : 100%;
+            background: #fff;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+
+            background-image: url('../static/img/innerback.jpg');
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+        }
+
+        .title{
+            width : 40%;
+        }
+
+        .swiper-container {
+            width: 70%;
+            height: 55%;
+            padding-top : 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 30%;
+            height: 80%;
+            border-radius: 45px;
+            border: 5px solid #e3dcca80
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+
+<body>
+    <div class='title-img' style="text-align:center;">
+        <img class='title' src="../static/img/title.png">
+    </div>
+    
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for i in info %}
+            <div class="swiper-slide" style="background-image:url('{{ i['url'] }}')"></div>
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    
+    <!-- Swiper JS -->
+
+    <!-- Initialize Swiper -->
+    <script>
+        
+        var swiper = new Swiper('.swiper-container', {
+            on: {
+                init: function () {
+                    console.log('swiper initialized');
+                },
+    
+                
+    
+               
+                // info[0]
+                click: function() {
+    
+                    {% autoescape false %}
+                    info = {{info}};
+                    {% endautoescape %}
+                    console.log(swiper.activeIndex);
+                    var i = swiper.activeIndex%info.length;
+                    window.location.href = info[i]['link'];
+                },
+            },
+            effect: 'coverflow', //轮播方式
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true, //循环
+            coverflowEffect: { //图片变换方式
+                rotate: 20,
+                stretch: 50,
+                depth: 300,
+                modifier: 1,
+                slideShadows: true,
+            },
+            fadeEffect: {
+                crossFade: true
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+        </script>
+</body>
+
+</html>

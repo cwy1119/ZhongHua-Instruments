@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{info["name"]}}</title>
+    <link rel="stylesheet" href="../static/css/typora.css">
+    <link rel="stylesheet" href="../static/css/pure-min.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/pixyll.css">
+    <link rel="stylesheet" href="../static/fonts/iconfont.css">
+    <link rel="stylesheet" href="../static/fonts/font.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/player.css" />
+    <script src="../static/js/jquery-3.js"></script>
+    <script src="../static/js/jquery.js"></script>
+
+    <script>
+        fullscreenfunc = function() {
+            var n = window.innerHeight;
+            fullscreens = document.getElementsByClassName("fullscreen")
+            for (var i = 0; i < fullscreens.length; i++) {
+                fullscreens[i].style.height = n + "px";
+            }
+        }
+        window.onload = function() {
+            fullscreenfunc();
+        }
+        window.onresize = fullscreenfunc;
+    </script>
+</head>
+
+<body>
+    <!-- 播放器固定控件 -->
+    <div class="player-control__btns_fixed">
+        <!-- 小版唱片 -->
+        <div class="music-player__disc" id="tiny_disc">
+            <!-- 唱片图片 -->
+            <div class="music-player__image stop" id="tiny_image">
+                <img width="100%" src="" alt="">
+            </div>
+        </div>
+        <div class="player-control__btn_fixed player-control__btn--prev"><i class="iconfont_fixed icon-prev"></i></div>
+        <div class="player-control__btn_fixed player-control__btn--play"><i class="iconfont_fixed icon-play"></i></div>
+        <div class="player-control__btn_fixed player-control__btn--next"><i class="iconfont_fixed icon-next"></i></div>
+    </div>
+
+    <section class="header container fullscreen " id="home" style="height: 979px;">
+        <div class="first-nav">
+            <ul class="first-nav-list">
+                <li>
+                    <a href="{{url_for('.index')}}">首页</a>
+                </li>
+                <li>
+                    <a href="#briefInfo-page" id="briefInfo-page-btn">乐器简介</a>
+                </li>
+                <li>
+                    <a href="#master-page">名家风采</a>
+                </li>
+                <li>
+                    <a href="#masterWork-page">名曲一览</a>
+                </li>
+                <li>
+                    <a href="{{url_for('.piano',ins=info['name'])}}">音色体验</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-resizer" style="top:389.5px;z-index:10;">
+            <h2 class="font-head">{{info["name"]}}</h2>
+        </div>
+        <div style="z-index:1;">
+            <img src="../static/img/innerback1.jpg" height="910px" ; width="100%">
+        </div>
+        <div class="scroll-down-div" onclick='document.getElementById("briefInfo-page-btn").click();'>
+            <i class="fa fa-angle-down" style="-webkit-animation: pulse 1.5s infinite;animation: pulse 1.5s infinite;font-size: 28px;position:absolute;color:black;"></i>
+        </div>
+    </section>
+
+    <header class="pure-menu pure-menu-horizontal nav ">
+        <div class="logo">{{info["name"]}}</div>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+                <a href="{{url_for('.index')}}" class="pure-menu-link font-nav">首页</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#briefInfo-page" id="briefInfo-page-btn" class="pure-menu-link font-nav">乐器简介</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#master-page" class="pure-menu-link font-nav">名家风采</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#masterWork-page" class="pure-menu-link font-nav">名曲一览</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="{{url_for('.piano',ins=info['name'])}}" class="pure-menu-link font-nav">音色体验</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="{{url_for('.manage')}}" class="pure-menu-link font-nav">管理</a>
+            </li>
+        </ul>
+    </header>
+
+    <section id="briefInfo-page">
+        <article class="article">
+            <div class="article-title ">{{info["intro_title"]}}</div>
+            <div class="article-content ">
+                {% autoescape false %} {{info["intro_text"]}} {% endautoescape %}
+            </div>
+        </article>
+        <div class="obj-pic">
+            <img src="{{info['pic_url']}}" class="obj-pic-img" />
+        </div>
+    </section>
+
+    <hr class="divider">
+    <section id="master-page">
+        <h3 class="font-title">名家风采</h3>
+        <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list dots">
+                {% for fam in finfo%}
+                <li class="pure-menu-item dot"><a class="pure-menu-link ">{{fam["name"]}}</a></li>
+                {% endfor%}
+            </ul>
+        </div>
+        <div class="slider" id="function-slider" style="min-height: 560px; width: 100vw; overflow: hidden; height: 581.8px;">
+            <ul class="unslider-container" style="width: 900%; position: relative; left: -500%; height: 581.8px;">
+                {% for fam in finfo%}
+                <li style="width: {{100/flen}}%;">
+                    <div class="slider-img-wrapper">
+                        <div class="left-desc">
+                            <!-- <div style="top:120px;" class="desc-wrapper">
+                                <div style="position: relative;">
+                                    <div class="hotspot-desc-title">琴头</div>
+                                    <div class="features-line features-line" style="width: 80px; right: -80px;"></div>
+                                </div>
+                                <div class="hotspot-desc-content">
+                                    ，灌制成唱片后很快风靡全国。这首乐曲自始至终流露的是一位饱尝人间辛酸和痛苦的盲艺人的思绪情感，作品展示了独特的民间演奏技巧与风格，以及无与伦比的深邃意 <a href="http://support.typora.io/Images/#upload-images-to-cloud-server-macos-only" target="_blank" class="icon"><i class="fa fa-share-square-o"
+                                            aria-hidden="true"></i></a></div>
+                            </div>
+                            <div style="top:380px;" class="desc-wrapper">
+                                <div style="position: relative;">
+                                    <div class="hotspot-desc-title">标题</div>
+                                    <div class="features-line features-line" style="width: 160px; right: -160px;"></div>
+                                </div>
+                                <div class="hotspot-desc-content">
+                                    阿炳原为无锡城区雷尊殿道士，自幼受到四巨头吴地小山歌、长篇叙事歌、滩簧、说因果和丝竹乐等乡土音乐的熏陶，对音乐非常喜爱。 <a href="http://support.typora.io/Resize-Image/" class="icon" target="_blank"><i
+                                            class="fa fa-share-square-o" aria-hidden="true"></i></a></div>
+                            </div> -->
+                        </div>
+                        <div style="width:600px;"><img src='{{fam["pic_url"]}}' class="img-rounded" style="width:100%; height:auto;"></div>
+                        <div class="right-desc">
+                            <!-- <div style="top:82px;" class="desc-wrapper">
+                                <div style="position: relative;">
+                                    <div class="hotspot-desc-title">标题</div>
+                                    <div class="features-line features-line" style="width: 150px;left: -150px;"></div>
+                                </div>
+                                <div class="hotspot-desc-content">阿炳原为无锡城区雷尊殿道士，自幼受到四巨头吴地小山歌、长篇叙事歌、滩簧、说因果和丝竹乐<a href="http://support.typora.io/Images/#display-images-in-relative-path" target="_blank" class="icon"><i class="fa fa-share-square-o"
+											aria-hidden="true"></i></a></div>
+                            </div>
+                            <div style="top:324px;" class="desc-wrapper">
+                                <div style="position: relative;">
+                                    <div class="hotspot-desc-title">标题</div>
+                                    <div class="features-line features-line" style="width: 100px;left: -100px;"></div>
+                                </div>
+                                <div class="hotspot-desc-content">制成唱片后很快风靡全国。这首乐曲自始至终流露的是一位饱尝人间辛酸和痛苦的盲艺人的思绪情感，作品展示了独特的民间演奏技巧与风格，以及无与伦比的深邃意
+                                    <a href="http://support.typora.io/Images/#drag--drop" target="_blank" class="icon"><i class="fa fa-share-square-o" aria-hidden="true"></i></a></div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- <div class="slogon">/* <a>Display images, rather than text for images when writing</a> */</div> -->
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="masterWork-page">
+        <h3 class="font-title">名曲一览</h3>
+        <div class="mplayer">
+            <!-- 播放器 -->
+            <div class="music-player">
+                <!-- audio标签 -->
+                <audio class="music-player__audio"></audio>
+                <!-- 播放器主体 -->
+                <div class="music-player__main">
+                    <!-- 模糊背景 -->
+                    <div class="music-player__blur"></div>
+                    <!-- 唱片 -->
+                    <div class="music-player__disc">
+                        <!-- 唱片图片 -->
+                        <div class="music-player__image stop">
+                            <img width=auto height=100% src="../static/img/阿炳.jpg" alt="">
+                        </div>
+                    </div>
+                    <!-- 控件主体 -->
+                    <div class="music-player__controls">
+                        <!-- 歌曲信息 -->
+                        <div class="music__info">
+                            <h3 class="music__info--title"></h3>
+                            <p class="music__info--author"></p>
+                            <!-- todo 添加歌曲信息 -->
+                        </div>
+                        <!-- 控件... -->
+                        <div class="player-control">
+                            <div class="player-control__content">
+                                <div class="player-control__btns">
+                                    <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i>
+                                    </div>
+                                    <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i>
+                                    </div>
+                                    <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i>
+                                    </div>
+                                    <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i>
+                                    </div>
+                                </div>
+                                <div class="player-control__volume">
+                                    <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i>
+                                    </div>
+                                    <div class="control__volume--progress progress"></div>
+                                </div>
+                            </div>
+
+                            <!-- 歌曲播放进度 -->
+                            <div class="player-control__content">
+                                <div class="player__song--progress progress"></div>
+                                <div class="player__song--timeProgess nowTime">00:00</div>
+                                <div class="player__song--timeProgess totalTime">00:00</div>
+                            </div>
+                            <!-- todo 添加歌词信息 -->
+                        </div>
+                    </div>
+                </div>
+                <!-- 歌曲列表 -->
+                <div class="music-player__list">
+                    <ul class="music__list_content">
+                        <!-- <li class="music__list__item play">123</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <article class="article">
+            <div class="article-title">歌曲介绍标题</div>
+            <div class="article-content ">
+                歌曲介绍内容
+            </div>
+        </article>
+    </section>
+
+
+
+    <script src="../static/js/base.js"></script>
+    <script src="../static/js/utill.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/player.js"></script>
+</body>
+
+</html>

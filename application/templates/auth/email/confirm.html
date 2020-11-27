@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<title>
+
+</title>
+<body>
+    <h4>{{user.name}},</h4>
+    <p欢迎注册CWY的网站<p>
+    <p>点击下方链接来验证您的账户</p>
+    <button><a href="{{url_for('auth.confirm',token=token,_external=True)}}"></a></button>
+    <p>(温馨提示:若再邮件中不能跳转,可复制到浏览器再打开)</p>
+    <p>祝好</p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+/*字体定义*/
+
+@font-face {
+    font-family: 'head';
+    src: url('18.ttf');
+}
+
+@font-face {
+    font-family: 'title';
+    src: url('zjj.ttf');
+}
+
+.logo,
+.font-nav,
+.font-title {
+    font-family: 'title';
+}
+
+.font-title {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.font-head {
+    font-family: 'head';
+    font-weight: bolder;
+    font-size: 200px;
+    color: rgb(87, 80, 80);
+}

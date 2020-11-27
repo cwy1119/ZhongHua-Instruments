@@ -1,0 +1,11 @@
+venv
+__pycache__
+application/__pycache__
+.vscode
+参考
+tmp
+test.zip
+temp
+application/static/audio
+application/static/images
+application/BlindWatermark.py

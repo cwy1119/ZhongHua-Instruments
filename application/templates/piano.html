@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/paino.css">
+    <script src="../static/js/piano.js" defer></script>
+    <title>体验页</title>
+</head>
+
+<body>
+    <div data-note="gong" class="key white">
+        <img src = '../static/img/gong.png' width=250px height=250px></img>
+        <img src = '../static/img/gongh.png' width=250px height=100px></img>
+    </div>
+    <div data-note="shang" class="key white">
+        <img src = '../static/img/shang.png' width=250px height=250px></img>
+        <img src = '../static/img/shangh.png' width=250px height=100px></img>
+    </div>
+    <div data-note="jue" class="key white">
+        <img src = '../static/img/jue.png' width=250px height=250px></img>
+        <img src = '../static/img/jueh.png' width=250px height=100px></img>
+    </div>
+    <div data-note="zhi" class="key white">
+        <img src = '../static/img/zhi.png' width=250px height=250px></img>
+        <img src = '../static/img/zhih.png' width=250px height=100px></img>
+    </div>
+    <div data-note="yu" class="key white">
+        <img src = '../static/img/yu.png' width=250px height=250px></img>
+        <img src = '../static/img/yuh.png' width=250px height=100px></img>
+    </div>
+    
+    <audio id="gong" src="{{ginfo[1]['c_url']}}"></audio>
+    <audio id="shang" src="{{ginfo[1]['d_url']}}"></audio>
+    <audio id="jue" src="{{ginfo[1]['e_url']}}"></audio>
+    <audio id="zhi" src="{{ginfo[1]['g_url']}}"></audio>
+    <audio id="yu" src="{{ginfo[1]['a_url']}}"></audio>
+  
+
+</body>
+</html>

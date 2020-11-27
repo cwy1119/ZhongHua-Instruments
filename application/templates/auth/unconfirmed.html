@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>等待验证 | 夸夸</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages%}
+            <div class="alert alert-danger">
+                <p>{{message}}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <h1>请验证后登录</h1>
+    <p>重新发送邮件? <a href="{{url_for('.resend_confirmation')}}">点击这</a></p>
+    <p>验证成功? <a href="{{url_for('main.index')}}">点击这</a></p>
+</body>
+</html>
